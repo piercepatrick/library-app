@@ -47,4 +47,10 @@ function makeCard()
 }
 let narnia = new Book('narnia', 'author', 25,false);
 addBookToLibrary(narnia);
+let bible = new Book('bible', 'author', 25,false);
+addBookToLibrary(bible);
+let testbible = new Book('3', 'author', 25,false);
+addBookToLibrary(testbible);
+let testbible3 = new Book('4', 'author', 25,false);
+addBookToLibrary(testbible3);
 displayBooks();
