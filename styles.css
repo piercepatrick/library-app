@@ -1,3 +1,30 @@
+ .header {
+    display: flex;
+    width: 100vmin;
+    flex-wrap: wrap;
+    margin: auto;
+    justify-content: center;
+ }
+
+ #headerTitle {
+     background: black;
+     color: white;
+     width: 100vmin;
+     flex-grow: 1;
+     text-align: center;
+ }
+ 
+ .topButtons {
+    flex-grow: 1;
+    text-align: center;
+ }
+ 
+#newBook, #resetBooks {
+    width: 15vmin;
+    height: 5vmin;
+    margin: 1vmin;
+}
+
  .container {
     display: flex;
     flex-wrap: wrap;
@@ -5,6 +32,7 @@
     width: 100vmin;
     margin: auto;
     margin-top: 10vmin;
+    margin-bottom: 10vmin;
  }
   
   .card {
