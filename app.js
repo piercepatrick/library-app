@@ -1,10 +1,23 @@
 const container = document.querySelector('.container');
 
-
-
+document.getElementById('form').addEventListener('submit', addBook);
 
 let myLibrary = [];
 
+function getBookFromInput(book) {
+  let title = document.getElementById('formTitle').value;
+  let author = document.getElementById('formAuthor').value;
+  let pages = document.getElementById('formPages').value;
+  let isRead = document.getElementById('formIsRead').value;
+  return new Book(title, author, pages, isRead);
+}
+
+
+
+function addBook(book) {
+  let newBook = getBookFromInput(book);
+  addBookToLibrary(newBook);
+}
 
 
 class Book {
@@ -19,10 +32,11 @@ class Book {
       this.pages = pages;
       this.isRead = isRead;
     }
-  }
+}
 
 function addBookToLibrary(newBook) {
     myLibrary.push(newBook);
+    return true;
 }
 
 function displayBooks() {
@@ -60,7 +74,7 @@ function closeForm() {
 }
 
 
-let narnia = new Book('narnia', 'author', 25,false);
+/*let narnia = new Book('narnia', 'author', 25,false);
 addBookToLibrary(narnia);
 let bible = new Book('bible', 'author', 25,false);
 addBookToLibrary(bible);
@@ -68,4 +82,4 @@ let testbible = new Book('3', 'author', 25,false);
 addBookToLibrary(testbible);
 let testbible3 = new Book('4', 'author', 25,false);
 addBookToLibrary(testbible3);
-displayBooks();
+displayBooks(); */
