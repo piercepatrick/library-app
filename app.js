@@ -1,6 +1,11 @@
 const container = document.querySelector('.container');
 
+
+
+
 let myLibrary = [];
+
+
 
 class Book {
     constructor(
@@ -45,6 +50,16 @@ function makeCard()
     card.append(isRead);
     container.append(card);
 }
+
+function openForm() {
+  document.getElementById("myForm").style.display = "block";
+}
+
+function closeForm() {
+  document.getElementById("myForm").style.display = "none";
+}
+
+
 let narnia = new Book('narnia', 'author', 25,false);
 addBookToLibrary(narnia);
 let bible = new Book('bible', 'author', 25,false);

@@ -16,8 +16,31 @@
     <div class='header'>
       <h1 id='headerTitle'>Your Library</h1>
       <div class='topButtons'>
-        <button type="button" id='newBook'>New Book</button>
+        <button type="button" id='newBook' onclick="openForm()">New Book</button>
         <button type='button' id='resetBooks'>Reset Library</button>
+        <div class="form-popup" id="myForm">
+          <form action="/action_page.php" class="form-container">
+            <h1>New Book</h1>
+        
+            <label for="title"><b>Title</b></label>
+            <input type="text" placeholder="Enter Title" name="title" required>
+        
+            <label for="author"><b>Author</b></label>
+            <input type="text" placeholder="Enter Author" name="author" required>
+        
+            <label for="pages"><b>Pages</b></label>
+            <input type="number" placeholder="Enter Number of Pages" name="pages" required>
+
+            <label for="isRead"><b>Has it been read?</b></label>
+            <input type="radio" id="yes" name="isRead" value="yes">
+            <label for="yes">Yes</label>
+            <input type="radio" id="no" name="isRead" value="no">
+            <label for="no">No</label><br>
+
+            <button type="submit" class="btn">Enter a book!</button>
+            <button type="submit" class="btn cancel" onclick="closeForm()">Close</button>
+          </form>
+        </div>
       </div>
     </div>
 
