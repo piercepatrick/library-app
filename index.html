@@ -19,7 +19,7 @@
         <button type="button" id='newBook' onclick="openForm()">New Book</button>
         <button type='button' id='resetBooks'>Reset Library</button>
         <div class="form-popup" id="myForm">
-          <form id='form'  class="form-container">
+          <form  id='form' class="form-container">
             <h1>New Book</h1>
         
             <label for="title"><b>Title</b></label>
@@ -33,9 +33,10 @@
 
             <label for="isRead">Read?</label>
             <input id='formIsRead' class="popup__checkbox" type="checkbox" id="is-read" />
-
-            <button id='formSubmit' type="submit" class="btn">Enter a book!</button>
-            <button type="submit" class="btn cancel" onclick="closeForm()">Close</button>
+          
+            <button id='formSubmit' class="btn" type="button">
+              Submit
+            </button>
           </form>
         </div>
       </div>

@@ -1,6 +1,6 @@
 const container = document.querySelector('.container');
 
-document.getElementById('form').addEventListener('submit', addBook);
+document.getElementById('formSubmit').addEventListener('click', addBook);
 
 let myLibrary = [];
 
@@ -15,10 +15,16 @@ function getBookFromInput(book) {
 
 
 function addBook(book) {
+  console.log('test');
   let newBook = getBookFromInput(book);
   addBookToLibrary(newBook);
+  //resetCards();
+  displayBooks()
 }
 
+function resetCards() {
+
+}
 
 class Book {
     constructor(
@@ -36,7 +42,6 @@ class Book {
 
 function addBookToLibrary(newBook) {
     myLibrary.push(newBook);
-    return true;
 }
 
 function displayBooks() {
