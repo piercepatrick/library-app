@@ -1,6 +1,6 @@
 const container = document.querySelector('.container');
 
-document.getElementById('formSubmit').addEventListener('click', addBook);
+document.getElementById('form').addEventListener('submit', addBook);
 
 let myLibrary = [];
 
@@ -8,18 +8,20 @@ function getBookFromInput(book) {
   let title = document.getElementById('formTitle').value;
   let author = document.getElementById('formAuthor').value;
   let pages = document.getElementById('formPages').value;
-  let isRead = document.getElementById('formIsRead').value;
+  let isRead = document.querySelector('input[name="formRead"]:checked').value;
   return new Book(title, author, pages, isRead);
 }
 
 
 
 function addBook(book) {
-  console.log('test');
   let newBook = getBookFromInput(book);
   addBookToLibrary(newBook);
   //resetCards();
   displayBooks()
+  closeForm();
+  book.preventDefault();
+  document.getElementById("form").reset();
 }
 
 function resetCards() {
@@ -77,14 +79,3 @@ function openForm() {
 function closeForm() {
   document.getElementById("myForm").style.display = "none";
 }
-
-
-/*let narnia = new Book('narnia', 'author', 25,false);
-addBookToLibrary(narnia);
-let bible = new Book('bible', 'author', 25,false);
-addBookToLibrary(bible);
-let testbible = new Book('3', 'author', 25,false);
-addBookToLibrary(testbible);
-let testbible3 = new Book('4', 'author', 25,false);
-addBookToLibrary(testbible3);
-displayBooks(); */
