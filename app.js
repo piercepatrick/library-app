@@ -13,11 +13,9 @@ function getBookFromInput(book) {
 }
 
 
-
 function addBook(book) {
   let newBook = getBookFromInput(book);
   addBookToLibrary(newBook);
-  //resetCards();
   displayBooks()
   closeForm();
   book.preventDefault();
@@ -47,13 +45,10 @@ function addBookToLibrary(newBook) {
 }
 
 function displayBooks() {
-    for (i=0; i< myLibrary.length; i++)
-    {
-        makeCard();
-    }
+    makeCard(myLibrary[myLibrary.length -1]);
 }
 
-function makeCard()
+function makeCard(bookToAdd)
 {
     let card = document.createElement('div');
     let title = document.createElement('h1');
@@ -61,10 +56,10 @@ function makeCard()
     let pages = document.createElement('p');
     let isRead = document.createElement('p')
     card.classList.add('card');
-    title.textContent = myLibrary[i].title;
-    author.textContent = myLibrary[i].author;
-    pages.textContent = myLibrary[i].pages;
-    isRead.textContent = myLibrary[i].isRead;
+    title.textContent = bookToAdd.title;
+    author.textContent = bookToAdd.author;
+    pages.textContent = bookToAdd.pages;
+    isRead.textContent = bookToAdd.isRead;
     card.append(title);
     card.append(author);
     card.append(pages);
