@@ -1,6 +1,7 @@
 const container = document.querySelector('.container');
 
 document.getElementById('form').addEventListener('submit', addBook);
+document.getElementById('resetBooks').addEventListener('click', resetCards);
 
 let myLibrary = [];
 
@@ -23,7 +24,10 @@ function addBook(book) {
 }
 
 function resetCards() {
-
+  while(container.firstChild) {
+    container.removeChild(container.lastChild);
+  }
+  myLibrary = [];
 }
 
 class Book {
