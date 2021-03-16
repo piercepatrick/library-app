@@ -116,3 +116,17 @@
 .form-container .btn:hover, .open-button:hover {
   opacity: 1;
 }
+
+.removeButton {
+  background-color: gray;
+  color: white;
+  width: 8vmin;
+  height: 4vmin;
+  transition-duration: 0.4s;
+  
+}
+
+.removeButton:hover {
+  background-color: rgba(151, 23, 23, 0.733);
+  color: white;
+}

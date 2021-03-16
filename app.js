@@ -2,7 +2,18 @@ const container = document.querySelector('.container');
 
 document.getElementById('form').addEventListener('submit', addBook);
 document.getElementById('resetBooks').addEventListener('click', resetCards);
+container.addEventListener("click", removeBook);
 
+let removeButtonElement = document.querySelectorAll('removeButton');
+for (var i = 0; i < removeButtonElement.length; i++) {
+    removeButtonElement[i].addEventListener('click', function(){ 
+      console.log('hey');
+      let index = this.getAttribute('data-index');
+      let cardToRemove = document.querySelector(`[data-index="${index}"]`)
+      container.removeChild(cardToRemove);
+      myLibrary.remove(index);
+    });
+}
 let myLibrary = [];
 
 function getBookFromInput(book) {
@@ -28,6 +39,15 @@ function resetCards() {
     container.removeChild(container.lastChild);
   }
   myLibrary = [];
+}
+
+function removeBook(e) {
+  if (e.target.classList.contains("removeButton")) {
+    let index = e.target.getAttribute('data-index');
+    let cardToRemove = document.querySelector(`[data-index="${index}"]`);
+    container.removeChild(cardToRemove);
+    myLibrary.splice(index,1);
+  }
 }
 
 class Book {
@@ -58,7 +78,11 @@ function makeCard(bookToAdd)
     let title = document.createElement('h1');
     let author = document.createElement('h2');
     let pages = document.createElement('p');
-    let isRead = document.createElement('p')
+    let isRead = document.createElement('p');
+    let removeButton = document.createElement('BUTTON');
+    removeButton.className = 'removeButton';
+    removeButton.innerText = 'Remove Book';
+    removeButton.setAttribute("data-index", myLibrary.indexOf(bookToAdd));
     card.classList.add('card');
     title.textContent = bookToAdd.title;
     author.textContent = bookToAdd.author;
@@ -68,6 +92,8 @@ function makeCard(bookToAdd)
     card.append(author);
     card.append(pages);
     card.append(isRead);
+    card.append(removeButton);
+    card.setAttribute("data-index", myLibrary.indexOf(bookToAdd));
     container.append(card);
 }
 
@@ -78,3 +104,6 @@ function openForm() {
 function closeForm() {
   document.getElementById("myForm").style.display = "none";
 }
+
+
+
