@@ -1,26 +1,21 @@
+*{font-family:'Courier New', Courier, monospace;}
+ 
  .header {
+    background-color: #668fff;
     display: flex;
-    width: 100vmin;
+    width: 100%;
     flex-wrap: wrap;
     margin: auto;
     justify-content: center;
  }
 
  #headerTitle {
-     background: black;
+    background-color: #668fff;
      color: white;
-     width: 100vmin;
+     width: 100%;
      flex-grow: 1;
      text-align: center;
  }
- 
-#newBook, #resetBooks {
-    flex-grow: 1;
-    text-align: center;
-    width: 15vmin;
-    height: 5vmin;
-    margin: 1vmin;
-}
 
  .container {
     display: flex;
@@ -33,33 +28,42 @@
  }
   
   .card {
+    color: white;
     margin: 1.5vmin;
     text-align: center;
     height: 30vmin;
-    width: 30vmin;
-    background-color: rgba(155, 145, 145, 0.541);
+    width: 32vmin;
+    background-color: #668fff;
     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.4);
     transition: 0.3s;
     border-radius: 5px;
 }
 
-  .card:hover {
-    box-shadow: 0px 0px 5px 5px rgba(0,0,0,0.8);
-  }
+.card:hover {
+  box-shadow: 0px 0px 5px 5px rgba(0,0,0,0.8);
+}
 
-/* Button used to open the contact form */
+
 #newBook, #resetBooks {
-  background-color: #555;
-  color: white;
+  background-color: white;
+  color:#668fff;
   padding: 16px 20px;
   border: none;
   cursor: pointer;
-  opacity: 0.8;
   flex-grow: 1;
   text-align: center;
   width: 15vmin;
   height: 5vmin;
   margin: 1vmin;
+  border-radius: 20%;
+}
+
+#resetBooks {
+  width: 20vmin;
+}
+#newBook:hover, #resetBooks:hover {
+  background-color: rgb(78, 115, 218);
+  color: white;
 }
 
 /* The popup form - hidden by default */
@@ -97,7 +101,7 @@
 
 /* Set a style for the submit/login button */
 .form-container .btn {
-  background-color: #4CAF50;
+  background-color: #668fff;
   color: white;
   padding: 16px 20px;
   border: none;
@@ -107,42 +111,21 @@
   opacity: 0.8;
 }
 
-/* Add a red background color to the cancel button */
-.form-container .cancel {
-  background-color: red;
-}
-
 /* Add some hover effects to buttons */
 .form-container .btn:hover, .open-button:hover {
   opacity: 1;
 }
 
+.removeButton, .readStatusBtn {
+  background-color: white;
+  color: #668fff;
+  height: 4vmin;
+}
+
 .removeButton {
-  background-color: gray;
-  color: white;
-  width: 10vmin;
-  height: 4vmin;
-  transition-duration: 0.4s;
-  
-}
-
-
-
-.removeButton:hover {
-  background-color: rgba(151, 23, 23, 0.733);
-  color: white;
-}
-
-.readStatusBtn {
-  background-color: gray;
-  color: white;
-  width: 10vmin;
-  height: 4vmin;
-  margin-left: 3vmin;
   margin-top: 2vmin;
 }
-
-.readStatusBtn:hover {
+.removeButton:hover, .readStatusBtn:hover {
   background-color: rgba(151, 23, 23, 0.733);
   color: white;
 }

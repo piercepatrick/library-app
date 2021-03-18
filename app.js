@@ -3,34 +3,7 @@ const container = document.querySelector('.container');
 document.getElementById('form').addEventListener('submit', addBook);
 document.getElementById('resetBooks').addEventListener('click', resetCards);
 container.addEventListener("click", changeBook);
-/*
-let removeButtonElement = document.querySelectorAll('removeButton');
-for (var i = 0; i < removeButtonElement.length; i++) {
-    removeButtonElement[i].addEventListener('click', function(){ 
-      let index = this.getAttribute('data-index');
-      let cardToRemove = document.querySelector(`[data-index="${index}"]`)
-      container.removeChild(cardToRemove);
-      myLibrary.remove(index);
-    });
-}
 
-
-let readStatusElement = document.querySelectorAll('readStatusBtn');
-for (var i = 0; i < readStatusElement.length; i++) {
-    readStatusElement[i].addEventListener('click', function(){ 
-      let index = this.getAttribute('data-index');
-      console.log(index);
-      let cardToChange = document.querySelector(`[data-index="${index}"]`);
-      let readStatus = cardToChange.querySelector('.isReadStatus');
-      console.log(readStatus.innerHTML);
-      if (readStatus.innerHTML === "Read") {
-        readStatus.innerHTML = "Not Read";
-      } else {
-        readStatus.innerHTML = "Read";
-      }
-    });
-}
-*/
 let myLibrary = [];
 
 function getBookFromInput(book) {
@@ -148,4 +121,5 @@ function closeForm() {
 
 // to do:
 // change isRead to true / false 
-//
+// add database
+// add close form button to popup
