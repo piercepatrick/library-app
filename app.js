@@ -2,18 +2,35 @@ const container = document.querySelector('.container');
 
 document.getElementById('form').addEventListener('submit', addBook);
 document.getElementById('resetBooks').addEventListener('click', resetCards);
-container.addEventListener("click", removeBook);
-
+container.addEventListener("click", changeBook);
+/*
 let removeButtonElement = document.querySelectorAll('removeButton');
 for (var i = 0; i < removeButtonElement.length; i++) {
     removeButtonElement[i].addEventListener('click', function(){ 
-      console.log('hey');
       let index = this.getAttribute('data-index');
       let cardToRemove = document.querySelector(`[data-index="${index}"]`)
       container.removeChild(cardToRemove);
       myLibrary.remove(index);
     });
 }
+
+
+let readStatusElement = document.querySelectorAll('readStatusBtn');
+for (var i = 0; i < readStatusElement.length; i++) {
+    readStatusElement[i].addEventListener('click', function(){ 
+      let index = this.getAttribute('data-index');
+      console.log(index);
+      let cardToChange = document.querySelector(`[data-index="${index}"]`);
+      let readStatus = cardToChange.querySelector('.isReadStatus');
+      console.log(readStatus.innerHTML);
+      if (readStatus.innerHTML === "Read") {
+        readStatus.innerHTML = "Not Read";
+      } else {
+        readStatus.innerHTML = "Read";
+      }
+    });
+}
+*/
 let myLibrary = [];
 
 function getBookFromInput(book) {
@@ -41,12 +58,26 @@ function resetCards() {
   myLibrary = [];
 }
 
-function removeBook(e) {
+function changeBook(e) {
   if (e.target.classList.contains("removeButton")) {
     let index = e.target.getAttribute('data-index');
     let cardToRemove = document.querySelector(`[data-index="${index}"]`);
     container.removeChild(cardToRemove);
     myLibrary.splice(index,1);
+  }
+  else if (e.target.classList.contains("readStatusBtn")) {
+    let index = e.target.getAttribute('data-index');
+    let cardToChange = document.querySelector(`[data-index="${index}"]`);
+    let readStatus = cardToChange.querySelector('.isReadStatus');
+    if (readStatus.innerHTML === "Read") {
+      readStatus.innerHTML = "Not Read";
+      myLibrary[index].isRead = "Not Read";
+    } else {
+      readStatus.innerHTML = "Read";
+      myLibrary[index].isRead = "Read";
+
+    }
+
   }
 }
 
@@ -55,7 +86,7 @@ class Book {
       title = "Unknown",
       author = "Unknown",
       pages = "0",
-      isRead = "false"
+      isRead = "Not Read",
     ) {
       this.title = title;
       this.author = author;
@@ -79,20 +110,29 @@ function makeCard(bookToAdd)
     let author = document.createElement('h2');
     let pages = document.createElement('p');
     let isRead = document.createElement('p');
+    let readStatusBtn = document.createElement('BUTTON');
     let removeButton = document.createElement('BUTTON');
+    
+    isRead.className = 'isReadStatus';
+    readStatusBtn.className = 'readStatusBtn';
+    readStatusBtn.innerText = 'Change Read Status';
+    readStatusBtn.setAttribute("data-index", myLibrary.indexOf(bookToAdd));
     removeButton.className = 'removeButton';
     removeButton.innerText = 'Remove Book';
     removeButton.setAttribute("data-index", myLibrary.indexOf(bookToAdd));
     card.classList.add('card');
+
     title.textContent = bookToAdd.title;
     author.textContent = bookToAdd.author;
-    pages.textContent = bookToAdd.pages;
+    pages.textContent = `${bookToAdd.pages} pages`;
     isRead.textContent = bookToAdd.isRead;
+
     card.append(title);
     card.append(author);
     card.append(pages);
     card.append(isRead);
     card.append(removeButton);
+    card.append(readStatusBtn);
     card.setAttribute("data-index", myLibrary.indexOf(bookToAdd));
     container.append(card);
 }
@@ -106,4 +146,6 @@ function closeForm() {
 }
 
 
-
+// to do:
+// change isRead to true / false 
+//

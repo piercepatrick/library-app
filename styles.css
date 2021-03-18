@@ -120,13 +120,29 @@
 .removeButton {
   background-color: gray;
   color: white;
-  width: 8vmin;
+  width: 10vmin;
   height: 4vmin;
   transition-duration: 0.4s;
   
 }
 
+
+
 .removeButton:hover {
+  background-color: rgba(151, 23, 23, 0.733);
+  color: white;
+}
+
+.readStatusBtn {
+  background-color: gray;
+  color: white;
+  width: 10vmin;
+  height: 4vmin;
+  margin-left: 3vmin;
+  margin-top: 2vmin;
+}
+
+.readStatusBtn:hover {
   background-color: rgba(151, 23, 23, 0.733);
   color: white;
 }
