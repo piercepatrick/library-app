@@ -1,3 +1,13 @@
+
+// Get elements
+const preObject = document.getElementById('object');
+
+// Create references
+const dbRefObject = firebase.database().ref().child('object');
+
+// Sync object changes
+dbRefObject.on('value', snap => console.log(snap.val()));
+
 const container = document.querySelector('.container');
 
 document.getElementById('form').addEventListener('submit', addBook);
