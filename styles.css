@@ -44,7 +44,7 @@
 }
 
 
-#newBook, #resetBooks {
+#newBook, #resetBooks, #googleButton {
   background-color: white;
   color:#668fff;
   padding: 16px 20px;
@@ -52,16 +52,13 @@
   cursor: pointer;
   flex-grow: 1;
   text-align: center;
-  width: 15vmin;
+  width: 20vmin;
   height: 5vmin;
   margin: 1vmin;
   border-radius: 20%;
 }
 
-#resetBooks {
-  width: 20vmin;
-}
-#newBook:hover, #resetBooks:hover {
+#newBook:hover, #resetBooks:hover, #googleButton:hover {
   background-color: rgb(78, 115, 218);
   color: white;
 }
