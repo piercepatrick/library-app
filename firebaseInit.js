@@ -2,6 +2,7 @@
 var firebaseConfig = {
     apiKey: "AIzaSyCOAr68MbvQaRetjBTtmhpNlPL2GUIXvXA",
     authDomain: "library-app-919dc.firebaseapp.com",
+    //authDomain: "localhost",
     projectId: "library-app-919dc",
     storageBucket: "library-app-919dc.appspot.com",
     messagingSenderId: "849220100865",
