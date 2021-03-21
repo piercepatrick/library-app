@@ -52,10 +52,11 @@
   cursor: pointer;
   flex-grow: 1;
   text-align: center;
-  width: 20vmin;
+  width: 25vmin;
   height: 5vmin;
   margin: 1vmin;
   border-radius: 20%;
+  font-size: 1.8vmin;
 }
 
 #newBook:hover, #resetBooks:hover, #googleButton:hover {

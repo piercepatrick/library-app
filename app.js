@@ -1,12 +1,8 @@
+// Get a reference to the database service
+const database = firebase.database();
 
-// Get elements
-const preObject = document.getElementById('object');
 
-// Create references
-const dbRefObject = firebase.database().ref().child('object');
-
-// Sync object changes
-dbRefObject.on('value', snap => console.log(snap.val()));
+let i = 1;
 
 const container = document.querySelector('.container');
 
@@ -23,6 +19,17 @@ function getBookFromInput(book) {
   let author = document.getElementById('formAuthor').value;
   let pages = document.getElementById('formPages').value;
   let isRead = document.querySelector('input[name="formRead"]:checked').value;
+  if (firebase.auth().currentUser) {
+    let user = firebase.auth().currentUser;
+    database.ref(`/users/${user.uid}/Books/` + i).set({
+      title: title,
+      author: author,
+      pages: pages,
+      isRead: isRead
+    });
+    i = i + 1;
+  }
+  
   return new Book(title, author, pages, isRead);
 }
 
