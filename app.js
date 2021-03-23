@@ -2,7 +2,7 @@
 const database = firebase.database();
 
 
-let i = 1;
+let i = 0;
 
 const container = document.querySelector('.container');
 
@@ -64,14 +64,24 @@ function changeBook(e) {
     if (readStatus.innerHTML === "Read") {
       readStatus.innerHTML = "Not Read";
       myLibrary[index].isRead = "Not Read";
+      if (firebase.auth().currentUser) {
+        let user = firebase.auth().currentUser;
+        database.ref(`/users/${user.uid}/Books/` + index).update({
+          isRead: "Not Read"
+        });
     } else {
       readStatus.innerHTML = "Read";
       myLibrary[index].isRead = "Read";
-
+      if (firebase.auth().currentUser) {
+        let user = firebase.auth().currentUser;
+        database.ref(`/users/${user.uid}/Books/` + index).update({
+          isRead: "Read"
+        });
     }
-
+  
   }
 }
+  }}
 
 class Book {
     constructor(
@@ -139,6 +149,10 @@ function closeForm() {
 
 
 // to do:
+// database functionality to reset library button
+// remove book from database when remove book button is hit
+// have book data saved for every login.
+// make icon on page to show they are signed in
 // change isRead to true / false 
-// add database
+// 
 // add close form button to popup
