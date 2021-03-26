@@ -1,3 +1,4 @@
+
 // Get a reference to the database service
 const database = firebase.database();
 
@@ -9,7 +10,6 @@ const container = document.querySelector('.container');
 document.getElementById('form').addEventListener('submit', addBook);
 document.getElementById('resetBooks').addEventListener('click', resetCards);
 container.addEventListener("click", changeBook);
-
 
 
 let myLibrary = [];

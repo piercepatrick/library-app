@@ -18,6 +18,7 @@ function signIn() {
     var token = credential.accessToken;
     // The signed-in user info.
     var user = result.user;
+    googleSignIn.innerHTML =  'Signed In ✅';
     // ...
   }).catch((error) => {
     // Handle Errors here.
