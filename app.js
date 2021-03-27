@@ -52,6 +52,10 @@ function resetCards() {
     container.removeChild(container.lastChild);
   }
   myLibrary = [];
+  if (firebase.auth().currentUser) {
+    let user = firebase.auth().currentUser;
+    database.ref(`/users/${user.uid}`).remove();
+  }
 }
 
 function changeBook(e) {
@@ -171,4 +175,3 @@ function closeForm() {
 // remove book from database when remove book button is hit
 // have book data saved for every login.
 // change isRead to true / false 
-// 
