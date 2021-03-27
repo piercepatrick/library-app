@@ -11,6 +11,10 @@ document.getElementById('form').addEventListener('submit', addBook);
 document.getElementById('resetBooks').addEventListener('click', resetCards);
 container.addEventListener("click", changeBook);
 
+let cancelButton = document.getElementById('formCancel');
+cancelButton.addEventListener('click', function() {
+  closeForm();
+});
 
 let myLibrary = [];
 
@@ -166,7 +170,5 @@ function closeForm() {
 // database functionality to reset library button
 // remove book from database when remove book button is hit
 // have book data saved for every login.
-// make icon on page to show they are signed in
 // change isRead to true / false 
 // 
-// add close form button to popup
