@@ -1,4 +1,7 @@
 
+let i;
+let myLibrary;
+let key;
 var provider = new firebase.auth.GoogleAuthProvider();
 
 const googleSignIn = document.querySelector('#googleButton');
@@ -19,17 +22,39 @@ function signIn() {
     // The signed-in user info.
     var user = result.user;
     googleSignIn.innerHTML =  'Signed In ✅';
-    // ...
+    firebase.database().ref(`/users/${user.uid}/Books/`).on('value', function(snap){
+
+      snap.forEach(function(childNodes){
+        myLibrary.push(childNodes.val());
+
+    firebase.database().ref(`/users/${user.uid}/Books/`).orderByKey().limitToLast(1).on('value', snapshot =>{
+      key = Object.keys(snapshot.val())[0];
+    })
+
+         //This loop iterates over children of user_id
+         //childNodes.key is key of the children of userid such as (20170710)
+         //childNodes.val().name;
+         //childNodes.val().time;
+         //childNodes.val().rest_time;
+         //childNodes.val().interval_time;
+      });
+    });
+    //console.log(typeof(key))
+    i = key + 1;
+    
+
+    //window.i = i;
+    //window.myLibrary = myLibrary;
+    //window.key = key;
   }).catch((error) => {
     // Handle Errors here.
     console.log(error)
-    console.log('Failed to do')
     var errorCode = error.code;
     var errorMessage = error.message;
     // The email of the user's account used.
     var email = error.email;
     // The firebase.auth.AuthCredential type that was used.
     var credential = error.credential;
-    // ...
+    googleSignIn.innerHTML =  'Failed to Sign In';
   });
 }

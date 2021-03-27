@@ -2,9 +2,14 @@
 // Get a reference to the database service
 const database = firebase.database();
 
+if (!firebase.auth().currentUser) {
+  i = 0;
+  myLibrary = [];
+}
 
-let i = 0;
-
+else {
+  
+}
 const container = document.querySelector('.container');
 
 document.getElementById('form').addEventListener('submit', addBook);
@@ -16,7 +21,7 @@ cancelButton.addEventListener('click', function() {
   closeForm();
 });
 
-let myLibrary = [];
+
 
 function getBookFromInput(book) {
   let title = document.getElementById('formTitle').value;
@@ -171,7 +176,5 @@ function closeForm() {
 // myLibrary array needs to be saved
 
 
-// database functionality to reset library button
-// remove book from database when remove book button is hit
 // have book data saved for every login.
 // change isRead to true / false 
