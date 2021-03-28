@@ -1,4 +1,5 @@
 
+const database = firebase.database();
 let i;
 let myLibrary;
 let key;
@@ -26,26 +27,25 @@ function signIn() {
 
       snap.forEach(function(childNodes){
         myLibrary.push(childNodes.val());
-
-    firebase.database().ref(`/users/${user.uid}/Books/`).orderByKey().limitToLast(1).on('value', snapshot =>{
-      key = Object.keys(snapshot.val())[0];
-    })
-
-         //This loop iterates over children of user_id
-         //childNodes.key is key of the children of userid such as (20170710)
-         //childNodes.val().name;
-         //childNodes.val().time;
-         //childNodes.val().rest_time;
-         //childNodes.val().interval_time;
       });
+      
     });
-    //console.log(typeof(key))
-    i = key + 1;
+
+    firebase.database().ref(`/users/${user.uid}/Books/`).limitToLast(1).once('value')
+.then(function(snapshot) {
+     snapshot.forEach(function(childSnapshot) {
+         //console.log(childSnapshot.key);
+         key = childSnapshot.key;
+         key = parseInt(key);
+         i = key + 1;
+         
+     });
+});
+
+
+
     
 
-    //window.i = i;
-    //window.myLibrary = myLibrary;
-    //window.key = key;
   }).catch((error) => {
     // Handle Errors here.
     console.log(error)
@@ -56,5 +56,5 @@ function signIn() {
     // The firebase.auth.AuthCredential type that was used.
     var credential = error.credential;
     googleSignIn.innerHTML =  'Failed to Sign In';
-  });
+  })
 }
