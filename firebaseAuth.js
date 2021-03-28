@@ -27,12 +27,43 @@ function signIn() {
 
       snap.forEach(function(childNodes){
         myLibrary.push(childNodes.val());
+        
+
+        let card = document.createElement('div');
+        let title = document.createElement('h1');
+        let author = document.createElement('h2');
+        let pages = document.createElement('p');
+        let isRead = document.createElement('p');
+        let readStatusBtn = document.createElement('BUTTON');
+        let removeButton = document.createElement('BUTTON');
+        
+        isRead.className = 'isReadStatus';
+        readStatusBtn.className = 'readStatusBtn';
+        readStatusBtn.innerText = 'Change Read Status';
+        readStatusBtn.setAttribute("data-index", myLibrary[myLibrary.length -1].index);
+        removeButton.className = 'removeButton';
+        removeButton.innerText = 'Remove Book';
+        removeButton.setAttribute("data-index", myLibrary[myLibrary.length -1].index);
+        card.classList.add('card');
+    
+        title.textContent = myLibrary[myLibrary.length -1].title;
+        author.textContent = myLibrary[myLibrary.length -1].author;
+        pages.textContent = `${myLibrary[myLibrary.length -1].pages} pages`;
+        isRead.textContent = myLibrary[myLibrary.length -1].isRead;
+    
+        card.append(title);
+        card.append(author);
+        card.append(pages);
+        card.append(isRead);
+        card.append(removeButton);
+        card.append(readStatusBtn);
+        card.setAttribute("data-index", myLibrary[myLibrary.length -1].index);
+        container.append(card);
       });
       
     });
 
-    firebase.database().ref(`/users/${user.uid}/Books/`).limitToLast(1).once('value')
-.then(function(snapshot) {
+    firebase.database().ref(`/users/${user.uid}/Books/`).limitToLast(1).once('value').then(function(snapshot) {
      snapshot.forEach(function(childSnapshot) {
          //console.log(childSnapshot.key);
          key = childSnapshot.key;
@@ -40,7 +71,22 @@ function signIn() {
          i = key + 1;
          
      });
-});
+    });
+
+/*
+    firebase.database().ref(`/users/${user.uid}/Books/`).once('value').then(function(snapshot) {
+      snapshot.forEach(function(childSnapshot) {
+          database.ref(`/users/${user.uid}/Books/` + childSnapshot.key).update({
+            index: childSnapshot.key,
+          });
+          key = childSnapshot.key;
+          key = parseInt(key);
+          i = key + 1;
+          
+      });
+    });
+
+*/
 
 
 

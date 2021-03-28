@@ -27,6 +27,7 @@ function getBookFromInput(book) {
   if (firebase.auth().currentUser) {
     let user = firebase.auth().currentUser;
     database.ref(`/users/${user.uid}/Books/` + i).set({
+      index: i,
       title: title,
       author: author,
       pages: pages,
